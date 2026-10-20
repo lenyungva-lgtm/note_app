@@ -7,21 +7,33 @@ Widget cardTargatAndSaving(
   Color color,
 ) {
   return Container(
-    width: 190,
-    height: 140,
+    width: double.infinity,
+    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 14),
     decoration: BoxDecoration(
       color: Colors.white,
-      borderRadius: BorderRadius.circular(30),
-      border: Border.all(width: 2, color: Colors.grey.shade300),
+      borderRadius: BorderRadius.circular(20),
+      border: Border.all(color: Colors.grey.shade200),
     ),
     child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        CircleAvatar(backgroundColor: color, child: Icon(icon)),
-        Text(title, style: TextStyle(fontSize: 23)),
+        CircleAvatar(
+          radius: 20,
+          backgroundColor: color,
+          child: Icon(icon, size: 20, color: Colors.black87),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          title,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(fontSize: 14, color: Colors.grey.shade700),
+        ),
         Text(
           value,
-          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
         ),
       ],
     ),

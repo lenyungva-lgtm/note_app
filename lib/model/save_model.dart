@@ -1,9 +1,9 @@
 class SaveModel {
-  int? id;
-  String note;
-  String date;
-  String type;
-  double money;
+  final int? id;
+  final String note;
+  final String date;
+  final String type;
+  final double money;
 
   SaveModel({
     this.id,
@@ -15,17 +15,23 @@ class SaveModel {
 
   // convert from Object Dart to Map
   Map<String, dynamic> toMap() {
-    return {"id": id, "note": note, "date": date, "type": type, "money": money};
+    return {
+      if (id != null) 'id': id,
+      'note': note,
+      'date': date,
+      'type': type,
+      'money': money,
+    };
   }
 
   // convert from Map to Object Dart
   factory SaveModel.fromMap(Map<String, dynamic> map) {
     return SaveModel(
-      id: map['id'],
-      note: map['note'],
-      date: map['date'],
-      type: map['type'],
-      money: map['money'],
+      id: (map['id'] as num?)?.toInt(),
+      note: map['note'] as String,
+      date: map['date'] as String,
+      type: map['type'] as String,
+      money: (map['money'] as num).toDouble(),
     );
   }
 }
